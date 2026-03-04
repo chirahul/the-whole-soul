@@ -11,17 +11,25 @@ import { CREATE_CART, ADD_TO_CART, UPDATE_CART_LINE, REMOVE_FROM_CART } from "./
 import { normalizeProduct, normalizeCollection, normalizeCart } from "./normalize";
 import type { Product, Collection, Cart, ShopifyProduct, ShopifyCollection, ShopifyCart, ShopifyConnection } from "./types";
 
-const domain = process.env.SHOPIFY_STORE_DOMAIN!;
-const token = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN!;
+let client: ReturnType<typeof createStorefrontApiClient> | null = null;
 
-const client = createStorefrontApiClient({
-  storeDomain: `https://${domain}`,
-  apiVersion: "2026-01",
-  publicAccessToken: token,
-});
+function getClient() {
+  if (client) return client;
+  const domain = process.env.SHOPIFY_STORE_DOMAIN;
+  const token = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN;
+  if (!domain || !token) {
+    throw new Error("Shopify credentials not configured");
+  }
+  client = createStorefrontApiClient({
+    storeDomain: `https://${domain}`,
+    apiVersion: "2026-01",
+    publicAccessToken: token,
+  });
+  return client;
+}
 
 async function shopifyFetch<T>(query: string, variables?: Record<string, unknown>): Promise<T> {
-  const { data, errors } = await client.request(query, { variables });
+  const { data, errors } = await getClient().request(query, { variables });
   if (errors) {
     throw new Error(`Shopify API Error: ${JSON.stringify(errors)}`);
   }
