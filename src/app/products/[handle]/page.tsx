@@ -117,25 +117,19 @@ export default async function ProductPage({ params }: PageProps) {
   return (
     <>
       <JsonLd product={product} />
-      <section className="relative mesh-bg-section overflow-hidden">
-        {/* Orbs — pointer-events-none */}
-        <div className="orb orb-1 top-[5%] left-[5%] pointer-events-none" />
-        <div className="orb orb-3 bottom-[10%] right-[5%] pointer-events-none" />
-
+      <section className="relative bg-[#FAF7F2] overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-10 md:py-20">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
-            {/* Gallery */}
             <div className="reveal-left">
               <ProductGallery images={product.images} title={product.title} />
             </div>
 
-            {/* Product Info */}
             <div className="md:sticky md:top-28 self-start reveal-right">
-              <div className="liquid-glass-card iridescent-border rounded-3xl p-6 md:p-8">
-                <span className="glass-tag inline-block mb-4 text-[#735F3F] text-[10px]">
+              <div className="bg-white border border-[#E8E3DA] rounded-3xl p-6 md:p-8">
+                <span className="tag inline-block mb-4 text-[#735F3F] text-[10px]">
                   {product.productType || "The Whole Soul"}
                 </span>
-                <h1 className="font-[var(--font-besley)] text-2xl md:text-3xl font-semibold text-[#232743] mb-3">
+                <h1 className="font-[var(--font-heading)] text-2xl md:text-3xl font-semibold text-[#1A1A1A] mb-3">
                   {product.title}
                 </h1>
 
@@ -158,10 +152,9 @@ export default async function ProductPage({ params }: PageProps) {
                   )}
                 </div>
 
-                {/* Description */}
                 <div className="mt-8">
                   <div
-                    className="text-sm text-[#090A11]/60 leading-relaxed [&_ul]:mt-3 [&_ul]:space-y-1.5 [&_li]:flex [&_li]:items-start [&_li]:gap-2 [&_li]:before:content-['\2713'] [&_li]:before:text-[#D4710A] [&_li]:before:font-bold [&_li]:before:mt-0.5 [&_p]:mb-3"
+                    className="text-sm text-[#555] leading-relaxed [&_ul]:mt-3 [&_ul]:space-y-1.5 [&_li]:flex [&_li]:items-start [&_li]:gap-2 [&_li]:before:content-['\2713'] [&_li]:before:text-[#D4710A] [&_li]:before:font-bold [&_li]:before:mt-0.5 [&_p]:mb-3"
                     dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
                   />
                 </div>

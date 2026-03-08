@@ -20,8 +20,8 @@ export async function RelatedProducts({ productId }: RelatedProductsProps) {
   return (
     <section className="mt-20 md:mt-28 reveal">
       <div className="text-center mb-10">
-        <span className="glass-tag inline-block mb-4 text-[#735F3F]">Discover More</span>
-        <h2 className="font-[var(--font-besley)] text-2xl md:text-3xl font-semibold text-[#232743]">
+        <span className="tag inline-block mb-4 text-[#735F3F]">Discover More</span>
+        <h2 className="font-[var(--font-heading)] text-2xl md:text-3xl font-semibold text-[#1A1A1A]">
           You May Also Like
         </h2>
       </div>

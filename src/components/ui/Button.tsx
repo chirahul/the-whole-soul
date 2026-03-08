@@ -15,7 +15,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const styles = cn(
-    variant === "accent" && "btn-accent",
+    variant === "accent" && "btn-primary",
     variant === "dark" && "btn-dark",
     variant === "glass" && "btn-glass",
     variant === "outline" && "btn-outline-glass",

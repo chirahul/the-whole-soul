@@ -82,19 +82,15 @@ export default async function CollectionPage({ params }: PageProps) {
   if (!collection) notFound();
 
   return (
-    <section className="relative min-h-screen mesh-bg-section overflow-hidden">
-      {/* Floating orbs — pointer-events-none */}
-      <div className="orb orb-2 top-[10%] left-[5%] pointer-events-none" />
-      <div className="orb orb-3 bottom-[15%] right-[10%] pointer-events-none" />
-
+    <section className="relative min-h-screen bg-[#FAF7F2] overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 py-12 md:py-20">
         <div className="mb-12 md:mb-16 reveal">
-          <span className="glass-tag inline-block mb-4 text-[#735F3F]">Collection</span>
-          <h1 className="font-[var(--font-besley)] text-3xl md:text-5xl font-semibold text-[#232743]">
-            <span className="gradient-text">{collection.title}</span>
+          <span className="tag inline-block mb-4 text-[#735F3F]">Collection</span>
+          <h1 className="font-[var(--font-heading)] text-3xl md:text-5xl font-semibold text-[#1A1A1A]">
+            <span className="text-[#D4710A]">{collection.title}</span>
           </h1>
           {collection.description && (
-            <p className="mt-3 text-base text-[#090A11]/50 max-w-2xl">
+            <p className="mt-3 text-base text-[#555] max-w-2xl">
               {collection.description}
             </p>
           )}
@@ -104,8 +100,8 @@ export default async function CollectionPage({ params }: PageProps) {
           <ProductGrid products={collection.products} />
         ) : (
           <div className="text-center py-20">
-            <div className="liquid-glass-card rounded-3xl p-12 max-w-md mx-auto">
-              <p className="text-[#090A11]/40">No products in this collection yet.</p>
+            <div className="bg-white border border-[#E8E3DA] rounded-3xl p-12 max-w-md mx-auto">
+              <p className="text-[#999]">No products in this collection yet.</p>
             </div>
           </div>
         )}

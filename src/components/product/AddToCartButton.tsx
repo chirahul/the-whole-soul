@@ -16,7 +16,7 @@ export function AddToCartButton({ variantId, availableForSale }: AddToCartButton
     return (
       <button
         disabled
-        className="w-full py-4 text-sm font-semibold text-[#090A11]/30 liquid-glass-card rounded-full cursor-not-allowed"
+        className="w-full py-4 text-sm font-semibold text-[#999] bg-white border border-[#E8E3DA] rounded-full cursor-not-allowed"
       >
         Sold Out
       </button>
@@ -25,15 +25,14 @@ export function AddToCartButton({ variantId, availableForSale }: AddToCartButton
 
   return (
     <div className="flex gap-3">
-      {/* Quantity selector */}
-      <div className="flex items-center glass-icon rounded-full overflow-hidden">
+      <div className="flex items-center bg-[#FAF7F2] rounded-full overflow-hidden">
         <button
           onClick={() => setQuantity(Math.max(1, quantity - 1))}
           className="w-11 h-12 flex items-center justify-center text-sm font-medium hover:bg-white/40 transition-colors"
         >
           -
         </button>
-        <span className="w-10 text-center text-sm font-semibold text-[#232743]">{quantity}</span>
+        <span className="w-10 text-center text-sm font-semibold text-[#1A1A1A]">{quantity}</span>
         <button
           onClick={() => setQuantity(quantity + 1)}
           className="w-11 h-12 flex items-center justify-center text-sm font-medium hover:bg-white/40 transition-colors"
@@ -42,11 +41,10 @@ export function AddToCartButton({ variantId, availableForSale }: AddToCartButton
         </button>
       </div>
 
-      {/* Add to cart */}
       <button
         onClick={() => addItem(variantId, quantity)}
         disabled={isLoading}
-        className="flex-1 btn-accent py-4 rounded-full disabled:opacity-60"
+        className="flex-1 btn-primary py-4 rounded-full disabled:opacity-60"
       >
         {isLoading ? (
           <span className="inline-flex items-center gap-2">

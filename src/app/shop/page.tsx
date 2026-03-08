@@ -19,18 +19,14 @@ export default async function ShopPage() {
   }
 
   return (
-    <section className="relative min-h-screen mesh-bg-section overflow-hidden">
-      {/* Floating orbs — pointer-events-none */}
-      <div className="orb orb-1 top-[5%] right-[10%] pointer-events-none" />
-      <div className="orb orb-2 bottom-[20%] left-[5%] pointer-events-none" />
-
+    <section className="relative min-h-screen bg-[#FAF7F2] overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-12 md:py-20">
         <div className="mb-12 md:mb-16 reveal">
-          <span className="glass-tag inline-block mb-4 text-[#735F3F]">Shop</span>
-          <h1 className="font-[var(--font-besley)] text-3xl md:text-4xl lg:text-5xl font-semibold text-[#232743]">
-            All <span className="gradient-text">Products</span>
+          <span className="tag inline-block mb-4 text-[#735F3F]">Shop</span>
+          <h1 className="font-[var(--font-heading)] text-3xl md:text-4xl lg:text-5xl font-semibold text-[#1A1A1A]">
+            All <span className="text-[#D4710A]">Products</span>
           </h1>
-          <p className="mt-4 text-base text-[#090A11]/50 max-w-lg leading-relaxed">
+          <p className="mt-4 text-base text-[#555] max-w-lg leading-relaxed">
             Wholesome snacks made with clean ingredients. No shortcuts.
           </p>
         </div>

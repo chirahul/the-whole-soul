@@ -26,16 +26,16 @@ function FaqItem({
   }, [isOpen]);
 
   return (
-    <div className="liquid-glass-card rounded-2xl overflow-hidden">
+    <div className="bg-white border border-[#E8E3DA] rounded-xl overflow-hidden">
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between gap-4 p-5 md:p-6 text-left cursor-pointer"
+        className="w-full flex items-center justify-between gap-4 p-5 md:p-6 text-left cursor-pointer hover:bg-[#FAF7F2] transition-colors"
       >
-        <span className="text-sm md:text-base font-semibold text-[#232743] leading-snug">
+        <span className="text-sm md:text-base font-semibold text-[#1A1A1A] leading-snug">
           {item.question}
         </span>
         <span
-          className={`flex-shrink-0 w-8 h-8 rounded-full glass-icon flex items-center justify-center transition-transform duration-300 ${
+          className={`flex-shrink-0 w-8 h-8 rounded-full bg-[#FFF3E6] flex items-center justify-center transition-transform duration-300 ${
             isOpen ? "rotate-45" : ""
           }`}
         >
@@ -58,7 +58,7 @@ function FaqItem({
       >
         <div className="px-5 md:px-6 pb-5 md:pb-6">
           <div className="line-accent mb-4" />
-          <p className="text-sm md:text-base text-[#090A11]/60 leading-relaxed">
+          <p className="text-sm md:text-base text-[#555] leading-relaxed">
             {item.answer}
           </p>
         </div>

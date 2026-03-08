@@ -1,82 +1,138 @@
-import Image from "next/image";
+"use client";
+
+import { useRef, useEffect } from "react";
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, EffectFade } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "swiper/css/pagination";
+
+const SLIDES = [
+  {
+    tag: "Clean Label Snacks from Pune",
+    headline: "Snacks Made\nwith Soul.",
+    body: "No preservatives. No refined sugar. No maida. Just wholesome goodness that tastes like someone actually cared.",
+    cta: { label: "Shop Now", href: "/shop" },
+    ctaSecondary: { label: "Our Story", href: "/about" },
+    bg: "bg-[#FAF7F2]",
+    textColor: "text-[#1A1A1A]",
+    imagePlaceholder: "HERO IMAGE 1: Lifestyle shot of all products together, or hero product (Barbeque Peanuts) with ingredients around it",
+  },
+  {
+    tag: "Baked. Never Fried. Ever.",
+    headline: "Your Gut\nWill Thank You.",
+    body: "Our chips are baked with real vegetables. Zero chemicals, 100% natural. Your body deserves better than deep-fried regret.",
+    cta: { label: "Explore Baked Snacks", href: "/collections/baked-snacks" },
+    ctaSecondary: null,
+    bg: "bg-[#F0EBE1]",
+    textColor: "text-[#1A1A1A]",
+    imagePlaceholder: "HERO IMAGE 2: Close-up of Broccoli or Beetroot chips with real vegetables in the background",
+  },
+  {
+    tag: "The Whole Soul Promise",
+    headline: "0 Chemicals.\n100% Natural.",
+    body: "Made in small batches in Pune with ingredients you can actually pronounce. If it's not good enough for our family, it doesn't go to yours.",
+    cta: { label: "Our Philosophy", href: "/philosophy" },
+    ctaSecondary: null,
+    bg: "bg-[#2D3A2E]",
+    textColor: "text-white",
+    imagePlaceholder: "HERO IMAGE 3: Ingredient flat-lay — spices, nuts, dates, broccoli, beetroot on a rustic surface",
+  },
+];
 
 export function HeroSection() {
+  const swiperRef = useRef<SwiperType | null>(null);
+
+  useEffect(() => {
+    // Cleanup to prevent SSR issues with swiper
+    return () => {
+      if (swiperRef.current) swiperRef.current = null;
+    };
+  }, []);
+
   return (
-    <section className="relative min-h-[80vh] md:min-h-[85vh] flex items-center overflow-hidden">
-      {/* Mesh gradient background — pointer-events-none so buttons work */}
-      <div className="absolute inset-0 mesh-bg-hero pointer-events-none" />
+    <section className="relative">
+      <Swiper
+        modules={[Autoplay, Pagination, EffectFade]}
+        effect="fade"
+        autoplay={{ delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true }}
+        pagination={{
+          clickable: true,
+          bulletClass: "inline-block w-2 h-2 rounded-full bg-[#1A1A1A]/20 mx-1.5 cursor-pointer transition-all duration-300",
+          bulletActiveClass: "!w-8 !bg-[#D4710A]",
+        }}
+        loop
+        speed={600}
+        onSwiper={(swiper) => { swiperRef.current = swiper; }}
+        className="hero-swiper"
+      >
+        {SLIDES.map((slide, i) => (
+          <SwiperSlide key={i}>
+            <div className={`${slide.bg} min-h-[70vh] md:min-h-[85vh] flex items-center`}>
+              <div className="w-full max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-16 md:py-0">
+                <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+                  {/* Text */}
+                  <div>
+                    <span className={`tag inline-block mb-5 ${slide.bg === "bg-[#2D3A2E]" ? "!bg-white/10 !text-[#C9A84C]" : ""}`}>
+                      {slide.tag}
+                    </span>
+                    <h1 className={`font-[var(--font-heading)] text-[2.5rem] md:text-[3.5rem] lg:text-7xl font-bold leading-[1.08] mb-5 whitespace-pre-line ${slide.textColor}`}>
+                      {slide.headline}
+                    </h1>
+                    <p className={`text-[15px] md:text-base lg:text-lg max-w-lg mb-8 leading-relaxed ${slide.bg === "bg-[#2D3A2E]" ? "text-white/60" : "text-[#555]"}`}>
+                      {slide.body}
+                    </p>
+                    <div className="flex flex-wrap gap-3">
+                      <Link
+                        href={slide.cta.href}
+                        className={slide.bg === "bg-[#2D3A2E]" ? "btn-primary" : "btn-dark"}
+                      >
+                        {slide.cta.label}
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ml-2">
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                      {slide.ctaSecondary && (
+                        <Link
+                          href={slide.ctaSecondary.href}
+                          className="btn-outline"
+                        >
+                          {slide.ctaSecondary.label}
+                        </Link>
+                      )}
+                    </div>
+                  </div>
 
-      {/* Floating orbs — desktop only via CSS, pointer-events-none */}
-      <div className="orb orb-1 top-[10%] left-[5%] pointer-events-none" />
-      <div className="orb orb-2 top-[60%] right-[10%] pointer-events-none" />
-      <div className="orb orb-3 bottom-[15%] left-[40%] pointer-events-none" />
-
-      {/* Background product image — pointer-events-none */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/images/hero-peanut.png"
-          alt=""
-          className="w-full h-full object-cover opacity-15 md:opacity-20"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-[#f5f2ee]/95 via-[#f5f2ee]/80 to-[#f5f2ee]/50" />
-      </div>
-
-      {/* Content — z-10 to be above backgrounds */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-12 md:py-0">
-        <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
-          {/* Text side */}
-          <div className="reveal">
-            <span className="glass-tag inline-block mb-5 text-[#735F3F]">Plant-Based Superfood</span>
-            <h1 className="font-[var(--font-besley)] text-[2.5rem] md:text-[3.5rem] lg:text-7xl font-bold leading-[1.08] mb-5">
-              <span className="gradient-text">Snacks Made</span>
-              <br />
-              <span className="text-[#232743]">with Soul</span>
-            </h1>
-            <p className="text-[15px] md:text-base lg:text-lg text-[#090A11]/60 max-w-lg mb-8 leading-relaxed">
-              Clean ingredients. No shortcuts. No artificial tricks. Just wholesome
-              goodness inspired by traditional wisdom, shaped for modern lives.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link href="/shop" className="btn-accent relative z-20">
-                Shop Now
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="ml-2">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
-              <Link href="/about" className="btn-glass relative z-20">
-                Our Story
-              </Link>
-            </div>
-
-          </div>
-
-          {/* Image side — desktop only */}
-          <div className="hidden md:flex md:justify-center">
-            <div className="max-w-[520px] w-full">
-              <div className="img-glass iridescent-border rounded-3xl overflow-hidden">
-                <Image
-                  src="/images/hero-peanut.png"
-                  alt="The Whole Soul - Barbeque Coated Peanut Crackle"
-                  width={600}
-                  height={700}
-                  priority
-                  unoptimized
-                  className="w-full h-auto object-cover"
-                />
+                  {/* Image placeholder */}
+                  <div className="hidden md:flex md:justify-center">
+                    <div className="max-w-[520px] w-full aspect-[4/5] rounded-2xl overflow-hidden border-2 border-dashed border-[#1A1A1A]/10 bg-white/5 flex items-center justify-center p-8">
+                      <p className={`text-center text-sm leading-relaxed font-medium ${slide.bg === "bg-[#2D3A2E]" ? "text-white/30" : "text-[#1A1A1A]/25"}`}>
+                        📸 {slide.imagePlaceholder}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
-      {/* Scroll indicator — desktop only via CSS */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator pointer-events-none">
-        <div className="w-6 h-10 rounded-full border-2 border-[#090A11]/20 flex items-start justify-center p-1.5">
-          <div className="w-1 h-2.5 rounded-full bg-[#D4710A]" />
-        </div>
-      </div>
+      {/* Custom pagination positioning */}
+      <style jsx global>{`
+        .hero-swiper .swiper-pagination {
+          position: absolute;
+          bottom: 24px !important;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 10;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      `}</style>
     </section>
   );
 }

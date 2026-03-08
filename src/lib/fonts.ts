@@ -1,9 +1,16 @@
-import { Besley, Fraunces, Anonymous_Pro } from "next/font/google";
+import { Playfair_Display, DM_Sans, Fraunces } from "next/font/google";
 
-export const besley = Besley({
+export const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-besley",
+  weight: ["400", "600", "700", "800"],
+  variable: "--font-heading",
+  display: "swap",
+});
+
+export const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -11,12 +18,5 @@ export const fraunces = Fraunces({
   subsets: ["latin"],
   weight: ["300", "400"],
   variable: "--font-fraunces",
-  display: "swap",
-});
-
-export const anonymousPro = Anonymous_Pro({
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-anonymous-pro",
   display: "swap",
 });
