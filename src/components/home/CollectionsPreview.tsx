@@ -5,19 +5,22 @@ const COLLECTIONS = [
     title: "Baked Snacks",
     description: "Crispy, crunchy, baked — never fried",
     href: "/collections/baked-snacks",
-    imagePlaceholder: "📸 COLLECTION IMAGE: Broccoli & Beetroot chips spread out, natural background",
+    image: "/images/product-beetroot.jpeg",
+    imageAlt: "Baked Beetroot Chips pouring into a ceramic bowl",
   },
   {
     title: "Chocolate Collection",
     description: "Pure indulgence, no added sugar",
     href: "/collections/chocolate-collection",
-    imagePlaceholder: "📸 COLLECTION IMAGE: Date bites & Pecan nuts arranged beautifully with cocoa",
+    image: "/images/lifestyle-chocolate-almonds-jar.jpeg",
+    imageAlt: "Premium Chocolate Coated Almonds with Rose Petals jar",
   },
   {
     title: "Instant Mixes",
     description: "Ready in minutes, no artificial anything",
     href: "/collections/instant-mixes",
-    imagePlaceholder: "📸 COLLECTION IMAGE: Vada Pav Chilla being cooked on a pan, steam rising",
+    image: "/images/product-oats-cheela.jpeg",
+    imageAlt: "Oats Thecha Cheela Premix pouch",
   },
 ];
 
@@ -40,12 +43,14 @@ export function CollectionsPreview() {
               className="group relative block rounded-2xl overflow-hidden bg-[#2D3A2E]"
             >
               <div className="relative aspect-[4/5] md:aspect-[3/4]">
-                {/* Image placeholder */}
-                <div className="absolute inset-0 flex items-center justify-center p-8">
-                  <p className="text-center text-sm text-white/20 font-medium leading-relaxed">
-                    {collection.imagePlaceholder}
-                  </p>
-                </div>
+                {/* Image */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={collection.image}
+                  alt={collection.imageAlt}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+                  loading="lazy"
+                />
 
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />

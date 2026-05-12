@@ -27,7 +27,7 @@ export function Header() {
     <>
       <header className={`nav-solid sticky top-0 z-40 ${scrolled ? "nav-scrolled" : ""}`}>
         <div className="mx-auto max-w-7xl px-4 md:px-8 lg:px-12">
-          <div className="flex items-center justify-between h-16 md:h-20">
+          <div className="flex items-center justify-between h-18 md:h-22">
             {/* Hamburger — mobile */}
             <button
               onClick={() => setMobileOpen(true)}
@@ -53,14 +53,14 @@ export function Header() {
             </nav>
 
             {/* Logo — centered */}
-            <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
-              <div className="rounded-lg overflow-hidden flex-shrink-0">
+            <Link href="/" className="flex items-center gap-3 flex-shrink-0">
+              <div className="flex-shrink-0 rounded-xl overflow-hidden mix-blend-multiply">
                 <Image
-                  src="/images/logo.jpg"
+                  src="/images/wholesoul-logo.svg"
                   alt="The Whole Soul"
                   width={576}
                   height={576}
-                  className="h-10 w-10 md:h-12 md:w-12 object-cover block"
+                  className="h-14 w-14 md:h-16 md:w-16 object-cover block"
                   priority
                 />
               </div>

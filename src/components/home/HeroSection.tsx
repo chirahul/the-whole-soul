@@ -18,7 +18,8 @@ const SLIDES = [
     ctaSecondary: { label: "Our Story", href: "/about" },
     bg: "bg-[#FAF7F2]",
     textColor: "text-[#1A1A1A]",
-    imagePlaceholder: "HERO IMAGE 1: Lifestyle shot of all products together, or hero product (Barbeque Peanuts) with ingredients around it",
+    image: "/images/product-broccoli.jpeg",
+    imageAlt: "Baked Broccoli Chips with fresh ingredients",
   },
   {
     tag: "Baked. Never Fried. Ever.",
@@ -28,7 +29,8 @@ const SLIDES = [
     ctaSecondary: null,
     bg: "bg-[#F0EBE1]",
     textColor: "text-[#1A1A1A]",
-    imagePlaceholder: "HERO IMAGE 2: Close-up of Broccoli or Beetroot chips with real vegetables in the background",
+    image: "/images/product-beetroot.jpeg",
+    imageAlt: "Baked Beetroot Chips pouring into a ceramic bowl",
   },
   {
     tag: "The Whole Soul Promise",
@@ -38,7 +40,8 @@ const SLIDES = [
     ctaSecondary: null,
     bg: "bg-[#2D3A2E]",
     textColor: "text-white",
-    imagePlaceholder: "HERO IMAGE 3: Ingredient flat-lay — spices, nuts, dates, broccoli, beetroot on a rustic surface",
+    image: "/images/lifestyle-chocolate-almonds-jar.jpeg",
+    imageAlt: "Premium Chocolate Coated Almonds with Rose Petals jar",
   },
 ];
 
@@ -105,12 +108,15 @@ export function HeroSection() {
                     </div>
                   </div>
 
-                  {/* Image placeholder */}
+                  {/* Image */}
                   <div className="hidden md:flex md:justify-center">
-                    <div className="max-w-[520px] w-full aspect-[4/5] rounded-2xl overflow-hidden border-2 border-dashed border-[#1A1A1A]/10 bg-white/5 flex items-center justify-center p-8">
-                      <p className={`text-center text-sm leading-relaxed font-medium ${slide.bg === "bg-[#2D3A2E]" ? "text-white/30" : "text-[#1A1A1A]/25"}`}>
-                        📸 {slide.imagePlaceholder}
-                      </p>
+                    <div className="max-w-[520px] w-full aspect-[4/5] rounded-2xl overflow-hidden bg-white/5 shadow-lg">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={slide.image}
+                        alt={slide.imageAlt}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                   </div>
                 </div>
