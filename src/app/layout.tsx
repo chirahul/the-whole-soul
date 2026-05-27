@@ -36,6 +36,9 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} | Clean Label Snacks Made with Soul`,
     description: SITE_DESCRIPTION,
   },
+  verification: {
+    google: "QxuPWiMl3DDlOH6Q1TPqIN1HfWZ6PhP7N645dWspEaU",
+  },
 };
 
 export default function RootLayout({
