@@ -85,18 +85,17 @@ export function Footer() {
             &copy; {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
-            {/* Instagram placeholder */}
-            <a href="#" className="text-white/30 hover:text-[#C9A84C] transition-colors" aria-label="Instagram">
+            <a
+              href="https://www.instagram.com/thewholesoull"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/60 hover:text-[#C9A84C] transition-colors"
+              aria-label="Instagram"
+            >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <rect x="2" y="2" width="20" height="20" rx="5" />
                 <circle cx="12" cy="12" r="5" />
                 <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
-              </svg>
-            </a>
-            {/* Facebook placeholder */}
-            <a href="#" className="text-white/30 hover:text-[#C9A84C] transition-colors" aria-label="Facebook">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
               </svg>
             </a>
           </div>

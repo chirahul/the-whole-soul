@@ -31,6 +31,7 @@ export function OrganizationJsonLd() {
       name: "Shriya",
       jobTitle: "Founder, Chief Everything Officer",
     },
+    sameAs: ["https://www.instagram.com/thewholesoull"],
   };
 
   return (
