@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { playfair, dmSans, fraunces } from "@/lib/fonts";
 import { CartProvider } from "@/context/CartContext";
 import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
@@ -48,6 +49,18 @@ export default function RootLayout({
       className={`${playfair.variable} ${dmSans.variable} ${fraunces.variable}`}
     >
       <body className="antialiased">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-3ZPH4NE5HF"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-3ZPH4NE5HF');
+          `}
+        </Script>
         <CartProvider>
           <AnnouncementBar />
           <Header />
