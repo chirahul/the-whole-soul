@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FaqAccordion } from "@/components/ui/FaqAccordion";
+import { FaqJsonLd } from "@/components/seo/JsonLd";
 import { FAQ_ITEMS, WHATSAPP_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 export default function FaqPage() {
   return (
     <section className="min-h-screen bg-[#FAF7F2]">
+      <FaqJsonLd items={FAQ_ITEMS} />
       <div className="max-w-3xl mx-auto px-5 md:px-8 lg:px-12 py-16 md:py-24">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16 reveal">

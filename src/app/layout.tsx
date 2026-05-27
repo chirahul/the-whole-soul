@@ -35,6 +35,22 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} | Clean Label Snacks Made with Soul`,
     description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    locale: "en_IN",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} — Clean Label Snacks Made with Soul`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} | Clean Label Snacks Made with Soul`,
+    description: SITE_DESCRIPTION,
+    images: ["/og-image.png"],
   },
   verification: {
     google: "QxuPWiMl3DDlOH6Q1TPqIN1HfWZ6PhP7N645dWspEaU",

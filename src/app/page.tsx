@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/seo/JsonLd";
 import { HeroSection } from "@/components/home/HeroSection";
 import { TrustBadges } from "@/components/home/TrustBadges";
 import { FeaturedProducts } from "@/components/home/FeaturedProducts";
@@ -30,6 +31,8 @@ function ProductsSkeleton() {
 export default function Home() {
   return (
     <>
+      <OrganizationJsonLd />
+      <WebSiteJsonLd />
       <HeroSection />
       <TrustBadges />
       <Suspense fallback={<ProductsSkeleton />}>

@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/Badge";
 import { ProductGallery } from "@/components/product/ProductGallery";
 import { AddToCartButton } from "@/components/product/AddToCartButton";
 import { RelatedProducts } from "@/components/product/RelatedProducts";
+import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 import type { Product } from "@/lib/shopify/types";
 
@@ -117,6 +118,13 @@ export default async function ProductPage({ params }: PageProps) {
   return (
     <>
       <JsonLd product={product} />
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: SITE_URL },
+          { name: "Shop", url: `${SITE_URL}/shop` },
+          { name: product.title, url: `${SITE_URL}/products/${product.handle}` },
+        ]}
+      />
       <section className="relative bg-[#FAF7F2] overflow-hidden">
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-10 md:py-20">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
